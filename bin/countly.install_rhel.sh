@@ -127,7 +127,7 @@ fi
 cd $DIR/.. && npm install
 
 #install nghttp2
-bash $DIR/scripts/install.nghttp2.sh
+bash $DIR/scripts/install.nghttp2-packaged.sh
 
 #install plugins
 node $DIR/scripts/install_plugins
