@@ -18,13 +18,13 @@ if [ -n "$(command -v apt-get)" ]; then
 elif [ -n "$(command -v yum)" ]; then
     cat << EOF > /etc/yum.repos.d/countly.repo
 [countly]
-name=CentOS-$releasever - packages for countly
-baseurl=http://repo.count.ly/CentOS/$releasever
+name=CentOS-\$releasever - packages for countly
+baseurl=http://repo.count.ly/CentOS/\$releasever
 enabled=1
 gpgcheck=0
 protect=1
 EOF
-    yum install libnghttp2-devel
+    yum install -y libnghttp2-devel
 fi
 
 npm install -g --unsafe-perm node-gyp
