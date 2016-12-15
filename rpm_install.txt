@@ -1,0 +1,25 @@
+It's document how to decrease countly build process for Linux CentOS 6
+
+Usually countly setup procedure has a part of building some C-libraries, including openssl, nghttp2 and libvips.
+Now we got rpm-repository with few of the.
+There nghttp2 and libvips special build which don't need openssl rebuild on the target system.
+This repo doesn't eliminate you from cluttering up the system, but it makes it easier.
+Here is 2-step insraction (i'm assume that you are root and using CentOS-6.8):
+
+cat <<EOF > /etc/yum.repos.d/countly.repo
+[countly]
+name=CentOS-6 - packages for countly
+baseurl=http://repo.count.ly/CentOS/6
+gpgcheck=0
+enabled=1
+protect=1
+EOF
+
+yum install -y libnghttp2-devel
+yum install -y vips-devel
+
+/root/countly-server/plugins/push/api/parts/apn
+
+Now you can pass steps in countly build process with openssl, nghttp2 and libvips (part of sharp preinstall process)
+
+There is branch with modified setup scripts, which uses rpm repos by default: https://github.com/ricky-ticky/countly-server/tree/libnghttp2-by-sergey
